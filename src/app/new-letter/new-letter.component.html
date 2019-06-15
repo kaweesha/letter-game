@@ -1,0 +1,15 @@
+<div >
+  <div>
+    <app-test-kep-press [displayLetter]="generatedLetter"></app-test-kep-press>
+  </div>
+  <div>
+    <div class="col-md-12">
+        <p class="letterStyle" [ngStyle]="{left: this.newPositionFromLeft,top: this.newPositionFromTop}" >{{generatedLetter}}</p>
+        <!-- <p class="letterStyle" [ngClass]="{newPosition}" >{{generatedLetter}}</p> -->
+    </div>
+  </div>
+  <div>
+    <button (click)="startGettingLetters($event)">Start</button>
+    <button (click)="stopGettingLetters($event)">Stop</button>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.letterStyle {
+    color: red; 
+    font-family: "Times New Roman", Times, serif;
+    font-size: 50px;
+    font-weight: bold;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    z-index: 1;
+}
