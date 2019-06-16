@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import {letterItem} from '../letterItem.model';
 
 @Component({
   selector: 'app-new-letter',
@@ -14,7 +15,7 @@ export class NewLetterComponent implements OnInit {
   generatedNumber: number = 0;
   newPositionFromLeft: string = "10";
   newPositionFromTop: string = "10";
-
+  newLetterItem: letterItem;
 
   constructor() {
     // this.asdf = Math.floor(Math.random() * 26);
@@ -31,7 +32,7 @@ export class NewLetterComponent implements OnInit {
   }
 
   public setTime() {
-    this.intervalId = setInterval(()=>{ this.getNewLetter() },3000);
+    this.intervalId = setInterval(()=>{ this.getNewLetter() },5000);
     console.log("intervalId: "+this.intervalId);
   }
 
@@ -39,9 +40,17 @@ export class NewLetterComponent implements OnInit {
     this.generatedNumber = Math.floor(Math.random() * 25);
     // console.log(this.generatedNumber);
 
-    this.letterGenerator();   
+    // this.letterGenerator(); 
+    this.createLetterItem(this.generatedNumber);
   }
   
+  public createLetterItem(generatedNumber: number) {
+    this.newLetterItem = new letterItem(this.allLetters[generatedNumber], false, false);
+    this.generatedLetter = this.newLetterItem.name;
+    this.setPosition();
+    console.log("Letter name: "+this.newLetterItem.name);
+  }
+
   public letterGenerator() {
     this.generatedLetter = this.allLetters[this.generatedNumber];
     console.log(this.generatedLetter);
