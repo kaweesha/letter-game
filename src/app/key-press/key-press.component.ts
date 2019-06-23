@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, Input} from '@angular/core';
 import { letterItem } from '../letterItem.model';
+import { LetterService } from '../letter.service';
 
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -10,15 +11,17 @@ export enum KEY_CODE {
   selector: 'app-key-press',
   templateUrl: './key-press.component.html',
   styleUrls: ['./key-press.component.css'],
+  providers: []
 })
 export class KeyPressComponent implements OnInit {
   @Input() displayLetter: string = "a";
   @Input() currentLetterItem: letterItem;
   pressedKey: string = "z";
   passCount: number = 0;
+  failCount: number = 0;
   status: string;
 
-  constructor() {}
+  constructor(public letterService: LetterService) {}
   
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -34,6 +37,7 @@ export class KeyPressComponent implements OnInit {
           this.status = "passed";
         }
         else {
+          this.failCount++;
           this.status = "failed";
         }
         this.currentLetterItem.isAnyKeyPressed=true;
@@ -46,15 +50,12 @@ export class KeyPressComponent implements OnInit {
     }else{
       console.log("You have already attempted.");
     }
-
-
-    // if (this.pressedKey==this.displayLetter) {
-    //   this.passCount++;
-    //   this.status = "passed";
-    // } else {
-    //   this.status = "failed";
-    // }
+    this.letterService.sendCurrentResults(this.passCount, this.failCount);
   }
+
+  // public displayResults() {
+  //     this.letterService.triggerDisplayResults.subscribe();
+  // }
 
   ngOnInit() {}
 

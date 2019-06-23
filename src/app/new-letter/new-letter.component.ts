@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {letterItem} from '../letterItem.model';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-letter',
@@ -16,12 +17,13 @@ export class NewLetterComponent implements OnInit {
   newPositionFromLeft: string = "10";
   newPositionFromTop: string = "10";
   newLetterItem: letterItem;
+  results: number[] = [0,0];
 
-  constructor() {
+  constructor(public router: Router) {
     // this.asdf = Math.floor(Math.random() * 26);
   }
 
-  public startGettingLetters($event) {
+  public startGettingLetters() {
       this.setTime();
       console.log("start getting letters");
   }
@@ -29,10 +31,12 @@ export class NewLetterComponent implements OnInit {
   public stopGettingLetters($event) {
     clearInterval(this.intervalId);
     console.log("stopped getting letters");
+
+    this.router.navigate(['/resultsPage']);
   }
 
   public setTime() {
-    this.intervalId = setInterval(()=>{ this.getNewLetter() },5000);
+    this.intervalId = setInterval(()=>{ this.getNewLetter() },2000);
     console.log("intervalId: "+this.intervalId);
   }
 
@@ -66,6 +70,6 @@ export class NewLetterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.startGettingLetters();
   }
-
 }
