@@ -9,7 +9,7 @@ import { LetterService } from './letter.service';
   providers: [LetterService]
 })
 export class AppComponent implements OnInit {
-  title = 'letter-game';
+  title = 'Letter Game';
   receivedPressedKey: string; 
 
   constructor(private router: Router, public letterService: LetterService) {}

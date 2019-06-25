@@ -1,6 +1,9 @@
 .description {
     color: red;
     text-align: center;
-    padding: 100px 0;
-    text-align: center;
+    border-color: coral;
+    border-radius: 25px;
+    border: 10px solid #5B2BF9;
+    padding: 10px;
+    margin: 100px;
 }

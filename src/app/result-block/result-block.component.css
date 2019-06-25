@@ -1,8 +1,18 @@
 .passResults {
-    color: #22FF38;
+    color: #3CAF0B;
 }
 
 .failResults {
     color: #E21010;
 
+}
+
+.resultBox {
+    font-size: 40px;
+    text-align: center ;
+    padding: 50px 0;
+    border: 10px solid #5B2BF9;
+    padding: 10px;
+    margin: 100px;
+    border-radius: 50px;
 }

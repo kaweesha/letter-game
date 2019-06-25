@@ -1,0 +1,13 @@
+h1 {
+	display: inline;
+	position: relative;
+	font: 70px Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: rgba(7, 7, 230, 0.856); 
+}
+
+h1:after {
+	content: "Letter Game!";
+	position: absolute; left: 5px; top: 2px;
+	color: rgba(255, 0, 0, 0.781);   
+}
